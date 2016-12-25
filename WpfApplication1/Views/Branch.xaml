@@ -1,0 +1,111 @@
+﻿<Window x:Class="WpfApplication1.Views.BranchWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication1.Views"
+        mc:Ignorable="d"
+        Title="Branch" MinHeight="350" MinWidth="600" Width ="650" Height="350" Background="Gray">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="170"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Header="Branch Data" BorderThickness="1" BorderBrush="White" Padding="5" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="85"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Branch ID" />
+                    <TextBox Text="{Binding Path=BranchID, Mode=TwoWay, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, ValidatesOnExceptions=True}" Grid.Column="1" Grid.Row="0" x:Name="branchID" />
+                    <Label Content="Name" Grid.Row="1" />
+                    <TextBox Text="{Binding Path=Name, Mode=TwoWay, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, ValidatesOnExceptions=True}" Grid.Column="1" Grid.Row="1" x:Name="name" />
+                    <Label Content="Location" Grid.Row="2" />
+                    <TextBox Text="{Binding Path=Location, Mode=TwoWay, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, ValidatesOnExceptions=True}" Grid.Column="1" Grid.Row="2" x:Name="location" />
+                    <Label Content="Profit" Grid.Row="3" />
+                    <TextBox Text="{Binding Path=Profit, Mode=TwoWay, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, ValidatesOnExceptions=True}" Grid.Column="1" Grid.Row="3" x:Name="profit" />
+                    <Label Content="Sales" Grid.Row="4" />
+                    <TextBox Text="{Binding Path=Sales, Mode=TwoWay, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, ValidatesOnExceptions=True}" Grid.Column="1" Grid.Row="4" x:Name="sales" />
+                </Grid>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header ="Branch Product Statistics" Grid.Row="1" BorderBrush="White" Padding="5" BorderThickness="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Content="Product Barcode" />
+                <ComboBox SelectedItem="{Binding Path=ProductBarCode, Mode=TwoWay}" Grid.Column="1" Grid.Row="0" x:Name="productBarCode" SelectionChanged="productBarCode_SelectionChanged" />
+                <Label Content="Quantity" Grid.Row="1" />
+                <TextBox Text="{Binding Path=Quntity, Mode=TwoWay, ValidatesOnDataErrors=True, ValidatesOnNotifyDataErrors=True, ValidatesOnExceptions=True}" Grid.Column="1" Grid.Row="1" x:Name="quntity" />
+                <Button Grid.Row="3" Content="Show Employee Data" Padding="5" Grid.ColumnSpan="2" Margin="5,5,5,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Employees in This Branch" Grid.Column="1" BorderBrush="White" Padding="5" BorderThickness="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="85"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label Content="Employee ID" />
+                <ComboBox SelectedItem="{Binding Path=EmployeeID, Mode=TwoWay}" Grid.Column="1" Grid.Row="0" x:Name="employeeID" />
+                <Button Grid.Row="1" Content="Get Employee Data" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Center" Padding="5" Margin="5"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Stats" Grid.Column="1" Grid.Row="1" Padding="5" BorderBrush="White" BorderThickness="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="85"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <Label Content="Products" />
+                <TextBox  Grid.Column="1" Grid.Row="0" x:Name="products"/>
+                <Label Content="Employees" Grid.Row="1" />
+                <TextBox  Grid.Column="1" Grid.Row="1" x:Name="employees"/>
+            </Grid>
+        </GroupBox>
+        
+    </Grid>
+</Window>
